@@ -1,0 +1,52 @@
+html {
+    transition: background-color 0.5s ease, color 0.5s ease;
+  }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f0f4f8;
+    color: #1e293b;
+  }  
+  
+.custom-bg {
+    background: radial-gradient(circle at 10% 20%, rgba(236, 252, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%);
+}
+.dark .custom-bg {
+    background: radial-gradient(circle at 10% 20%, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0) 100%);
+}
+.project-card {
+    transition: all 0.3s ease;
+    transform: translateY(0);
+}
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+.dark .project-card:hover {
+    box-shadow: 0 10px 25px -5px rgba(255, 255, 255, 0.05);
+}
+.skill-badge {
+    transition: all 0.2s ease;
+}
+.skill-badge:hover {
+    transform: scale(1.05);
+}
+.nav-link {
+    position: relative;
+}
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: currentColor;
+    transition: width 0.3s ease;
+}
+.nav-link:hover::after {
+    width: 100%;
+}
+.active::after {
+    width: 100%;
+}

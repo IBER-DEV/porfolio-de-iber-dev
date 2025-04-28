@@ -1,0 +1,41 @@
+# Evitar archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos temporales de editores
+*.log
+*.tmp
+*.bak
+*.swp
+
+# Node modules (por si en el futuro agregas dependencias)
+node_modules/
+
+# Archivos de entorno (por si algún día conectas a APIs o backend)
+.env
+.env.local
+.env.development
+.env.production
+
+# Archivos personales
+*.zip
+*.rar
+*.7z
+*.tar.gz
+
+# Cache de navegadores o herramientas
+.cache/
+dist/
+build/
+
+# Archivos de despliegue (GitHub Pages puede generar carpetas temporales)
+*.publish
+
+# Ignorar configuraciones locales de editores
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Evitar archivos de sistema de Windows
+Desktop.ini

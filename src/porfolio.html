@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Portafolio de Iber - Desarrollador Full Stack. Experiencia en JavaScript, React, Node.js.">
+    <meta name="keywords" content="portafolio, desarrollador, full stack, react, node">
+    <meta name="author" content="Iber">
+    <meta name="theme-color" content="#4F46E5">
+    <link rel="icon" href="img/favicon.png" type="image/png">
+    <title>Portfolio Iber Masco</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.19.1/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-white text-gray-800 dark:bg-slate-900 dark:text-gray-100 transition-colors duration-300">
+    <!-- Theme Toggle -->
+    <button id="theme-toggle"
+        class="fixed top-6 right-6 z-50 p-2 rounded-full bg-white/80 dark:bg-slate-800/80 shadow-lg backdrop-blur-sm">
+        <i id="theme-icon" class="fas fa-moon text-gray-800 dark:text-yellow-300"></i>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm z-40 shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#"
+                    class="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">Portfolio</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link active">Inicio</a>
+                    <a href="#about" class="nav-link">Sobre mí</a>
+                    <a href="#projects" class="nav-link">Proyectos</a>
+                    <a href="#skills" class="nav-link">Habilidades</a>
+                    <a href="#contact" class="nav-link">Contacto</a>
+                </div>
+                <button id="mobile-menu-button" class="md:hidden">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-slate-800 px-6 py-4 shadow-lg">
+            <div class="flex flex-col space-y-4">
+                <a href="#home" class="nav-link active">Inicio</a>
+                <a href="#about" class="nav-link">Sobre mí</a>
+                <a href="#projects" class="nav-link">Proyectos</a>
+                <a href="#skills" class="nav-link">Habilidades</a>
+                <a href="#contact" class="nav-link">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-20 custom-bg">
+        <div class="container mx-auto px-6 py-20">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">
+                        Hola, soy <span
+                            class="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">Iber</span>
+                    </h1>
+                    <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-gray-600 dark:text-gray-300 animate-fade-in"
+                        style="animation-delay: 0.2s;">
+                        Desarrollador Full Stack
+                    </h2>
+                    <p class="text-lg mb-8 text-gray-500 dark:text-gray-400 max-w-lg animate-fade-in"
+                        style="animation-delay: 0.4s;">
+                        apasionado por crear soluciones digitales elegantes y eficientes.
+                        Con experiencia en Python, Java, React, Angular y SQL, ayudo a transformar ideas en proyectos
+                        tecnológicos sólidos.
+                    </p>
+                    <div class="flex space-x-4 animate-fade-in" style="animation-delay: 0.6s;">
+                        <a href="#projects"
+                            class="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg shadow-lg hover:shadow-xl transition-all">
+                            Ver proyectos
+                        </a>
+                        <a href="#contact"
+                            class="px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 transition-all">
+                            Contactar
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex flex-col items-center justify-center animate-fade-in"
+                    style="animation-delay: 0.8s;">
+                    <div class="relative">
+                        <div class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden shadow-xl">
+                            <img src="img/profile.png" alt="Avatar de Iber" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute bottom-4 right-4">
+                            <a href="https://www.linkedin.com/in/ibermasco/" target="_blank"
+                                class="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all">
+                                LinkedIn
+                            </a>
+                        </div>
+                        <div class="absolute -bottom-4 -left-4 bg-white dark:bg-slate-800 p-4 rounded-lg shadow-lg">
+                            <p class="font-bold">2+ años</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">de experiencia</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- experience Section -->
+    <section id="experience" class="py-20 ">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12  flex justify-center items-center">
+                <i class="fas fa-briefcase font-semibold text-black/80 dark:text-white mr-2"></i> Experiencia laboral
+            </h2>
+
+            <div class="relative flex flex-col items-center border-l-2 border-gray-700 space-y-12 max-w-2xl mx-auto">
+
+                <!-- Experiencia 1 -->
+                <div class="flex items-start">
+                    <span class="text-yellow-400 -ml-4 absolute rounded-full text-5xl">•</span>
+                    <div class="ml-6 text left">
+                        <h3 class="text-xl font-bold text-yellow-400">Desarrollador Full Stack Freelance</h3>
+                        <p class="text-gray-400">2025 - Actualidad</p>
+                        <p class="mt-2 text-gray-300">
+                            He diseñado e implementado aplicaciones web modernas para pequeños negocios, optimizando
+                            procesos internos y mejorando su presencia digital.
+                            <br><strong>+5 proyectos entregados</strong> con mejoras de eficiencia hasta un 30%.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Experiencia 2 -->
+                <div class="flex items-start">
+                    <span class="text-yellow-400 -ml-4 absolute rounded-full text-5xl">•</span>
+                    <div class="ml-6">
+                        <h3 class="text-xl font-bold text-yellow-400">Jefe de Ventas - Almacen Jeda</h3>
+                        <p class="text-gray-400">2022</p>
+                        <p class="mt-2 text-gray-300">
+                           Encargado de la gestión de ventas y atención al cliente, liderando un equipo de 5 personas.
+                            Implementación de estrategias que aumentaron las ventas en un 20% en 6 meses.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Experiencia 3 -->
+                <div class="flex items-start">
+                    <span class="text-yellow-400 -ml-4 absolute rounded-full text-5xl">•</span>
+                    <div class="ml-6">
+                        <h3 class="text-xl font-bold text-yellow-400">Supervisor de soporte Sitio -Grupo ASD</h3>
+                        <p class="text-gray-400">2024</p>
+                        <p class="mt-2 text-gray-300">
+                            Responsable de soporte en infraestructura de TI durante exámenes y eventos académicos.
+                            Resolución ágil de fallos técnicos, asegurando el correcto funcionamiento de plataformas y
+                            dispositivos.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-50 dark:bg-slate-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-16 relative">
+                <span class="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">Sobre mí</span>
+                <span
+                    class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"></span>
+            </h2>
+
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
+                    <div
+                        class="w-64 h-64 rounded-full overflow-hidden border-4 border-white dark:border-slate-700 shadow-lg">
+                        <img src="img/profile.png" alt="Foto de perfil de iber" loading="lazy"
+                            class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="md:w-2/3 md:pl-12">
+                    <p class="text-lg mb-6 text-gray-600 dark:text-gray-300">
+                        Mi nombre es Iber, un apasionado desarrollador Full Stack.
+                        Desde que toqué mi primer código en la universidad, supe que quería crear tecnología que
+                        mejorara vidas..
+                    </p>
+                    <p class="text-lg mb-6 text-gray-600 dark:text-gray-300">
+                        Soy un apasionado de la innovación, la automatización de procesos y el diseño de experiencias
+                        digitales simples pero memorables.
+                        He presentado proyectos en ferias universitarias, mostrando cómo la programación puede potenciar
+                        pequeños negocios y comunidades.
+                    </p>
+                    <p class="text-lg mb-6 text-gray-600 dark:text-gray-300">
+                        Actualmente, sigo creciendo como desarrollador mientras aporto mis habilidades a proyectos
+                        reales que marcan la diferencia.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 mt-8">
+                        <div class="flex items-center">
+                            <div class="p-3 rounded-full bg-blue-100 dark:bg-blue-900/30 mr-4">
+                                <i class="fas fa-code text-blue-500 dark:text-blue-400"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold">Desarrollo Web</h3>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Frontend & Backend</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="p-3 rounded-full bg-purple-100 dark:bg-purple-900/30 mr-4">
+                                <i class="fas fa-mobile-alt text-purple-500 dark:text-purple-400"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold">Responsive Design</h3>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Mobile First</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="p-3 rounded-full bg-green-100 dark:bg-green-900/30 mr-4">
+                                <i class="fas fa-paint-brush text-green-500 dark:text-green-400"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold">UI/UX Design</h3>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">User Experience</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="p-3 rounded-full bg-yellow-100 dark:bg-yellow-900/30 mr-4">
+                                <i class="fas fa-server text-yellow-500 dark:text-yellow-400"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold">DevOps</h3>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">CI/CD Pipelines</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-16 relative">
+                <span class="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">Mis
+                    Proyectos</span>
+                <span
+                    class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"></span>
+            </h2>
+
+            <!-- Project Filters -->
+            <div class="flex justify-center mb-12 flex-wrap gap-2">
+                <button class="project-filter px-4 py-2 rounded-full bg-blue-500 text-white"
+                    data-filter="all">Todos</button>
+                <button
+                    class="project-filter px-4 py-2 rounded-full bg-gray-200 dark:bg-slate-700 hover:bg-gray-300 dark:hover:bg-slate-600"
+                    data-filter="web">Web</button>
+                <button
+                    class="project-filter px-4 py-2 rounded-full bg-gray-200 dark:bg-slate-700 hover:bg-gray-300 dark:hover:bg-slate-600"
+                    data-filter="mobile">Mobile</button>
+                <button
+                    class="project-filter px-4 py-2 rounded-full bg-gray-200 dark:bg-slate-700 hover:bg-gray-300 dark:hover:bg-slate-600"
+                    data-filter="design">Diseño</button>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg"
+                    data-category="web">
+                    <div class="h-48 bg-gradient-to-br from-blue-400 to-purple-500 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                            alt="Project 1" loading="lazy" class="w-full h-full object-cover">
+                        <div
+                            class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                            <a href="https://github.com/IBER-DEV/proyecto_final"
+                                class="px-6 py-3 bg-white text-blue-500 rounded-lg font-medium">Ver Detalles</a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold">Dashboard WorkFormal</h3>
+                            <span
+                                class="text-xs px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded-full">Web</span>
+                        </div>
+                        <p class="text-gray-500 dark:text-gray-400 mb-4">
+                            WorkFormal es un Dashboard diseñado para facilitar la formalización laboral en Colombia,
+                            dirigida a trabajadores informales y pequeñas empresas.
+                            Esta solución integral simplifica los procesos de registro, gestión de contratos,
+                            pagos de seguridad social y educación financiera.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-slate-700 rounded-full">React</span>
+                            <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-slate-700 rounded-full">Chart.js</span>
+                            <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-slate-700 rounded-full">Node.js</span>
+                            <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-slate-700 rounded-full">Supabase</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg"
+                    data-category="web">
+                    <div class="h-48 bg-gradient-to-br from-green-400 to-blue-500 relative overflow-hidden">
+                        <img src="img/project2.png"
+                            alt="Project 2" loading="lazy" class="w-full h-full object-cover">
+                        <div
+                            class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                            <a href="https://github.com/IBER-DEV/UniFinance" class="px-6 py-3 bg-white text-green-500 rounded-lg font-medium">Ver
+                                Detalles</a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold">UniFinance</h3>
+                            <span
+                                class="text-xs px-2 py-1 bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-300 rounded-full">web</span>
+                        </div>
+                        <p class="text-gray-500 dark:text-gray-400 mb-4">
+                            UniFinance es una aplicación web de gestión financiera moderna creada con Vite, React y
+                            TailwindCSS.
+                            Diseñado especialmente para estudiantes, permite un fácil seguimiento de: gastos, ingresos y
+                            presupuestos.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-slate-700 rounded-full">React
+                                Native</span>
+                            <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-slate-700 rounded-full">Firebase</span>
+                            <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-slate-700 rounded-full">Redux</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg"
+                    data-category="design">
+                    <div class="h-48 bg-gradient-to-br from-purple-400 to-pink-500 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1528&q=80"
+                            alt="Project 3" loading="lazy" class="w-full h-full object-cover">
+                        <div
+                            class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                            <a href="#" onclick="mostrarMensaje()" class="px-6 py-3 bg-white text-red-500 rounded-lg font-medium">Ver Detalles</a>
+
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold">Branding Moderno</h3>
+                            <span
+                                class="text-xs px-2 py-1 bg-purple-100 dark:bg-purple-900 text-purple-600 dark:text-purple-300 rounded-full">Diseño</span>
+                        </div>
+                        <p class="text-gray-500 dark:text-gray-400 mb-4">
+                            Identidad visual completa para startup tecnológica incluyendo logo, paleta de colores y guía
+                            de estilo.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-slate-700 rounded-full">Figma</span>
+                            <span
+                                class="text-xs px-2 py-1 bg-gray-100 dark:bg-slate-700 rounded-full">Illustrator</span>
+                            <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-slate-700 rounded-full">Photoshop</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg"
+                    data-category="web">
+                    <div class="h-48 bg-gradient-to-br from-yellow-400 to-orange-500 relative overflow-hidden">
+                        <img src="img/project1.png" alt="Project 4" loading="lazy" class="w-full h-full object-cover">
+                        <div
+                            class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                            <a href="https://github.com/IBER-DEV/EnergyCalc"
+                                class="px-6 py-3 bg-white text-orange-500 rounded-lg font-medium mr-2">Ver
+                                Detalles</a>
+                            <a href="https://energycalc.pages.dev/"
+                                class="px-6 py-3 bg-orange-500 text-white rounded-lg font-medium">Ver Sitio Web</a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold">Wen Consumo de Energia</h3>
+                            <span
+                                class="text-xs px-2 py-1 bg-orange-100 dark:bg-orange-900 text-orange-600 dark:text-orange-300 rounded-full">Web</span>
+                        </div>
+                        <p class="text-gray-500 dark:text-gray-400 mb-4">
+                            EnergyCalc es una plataforma web para monitorear y optimizar el consumo energético de
+                            hogares, calcula el consumo de los electrodomésticos y
+                            realiza reportes personalizados de los costes fijos.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-slate-700 rounded-full">tailwind</span>
+                            <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-slate-700 rounded-full">html</span>
+                            <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-slate-700 rounded-full">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg"
+                    data-category="mobile">
+                    <div class="h-48 bg-gradient-to-br from-red-400 to-pink-500 relative overflow-hidden">
+                        <img src="img/project3.png"
+                            alt="Project 5" loading="lazy" class="w-full h-full object-cover">
+                        <span
+                            class="absolute top-2 right-2 text-xs px-2 py-1 bg-yellow-400 dark:bg-yellow-500 text-gray-900 dark:text-gray-900 rounded-full font-medium">En
+                            camino</span>
+                        <div
+                            class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                            <a href="#" onclick="mostrarMensaje()" class="px-6 py-3 bg-white text-red-500 rounded-lg font-medium">Ver Detalles</a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold">DokuApa</h3>
+                            <span
+                                class="text-xs px-2 py-1 bg-red-100 dark:bg-red-900 text-red-600 dark:text-red-300 rounded-full">Mobile</span>
+                        </div>
+                        <p class="text-gray-500 dark:text-gray-400 mb-4">
+                            DokuApa es una aplicación móvil diseñada para facilitar la creacion y generación de documentos
+                            con normas y citas APA.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-slate-700 rounded-full">Flutter</span>
+                            <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-slate-700 rounded-full">Firebase</span>
+                            <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-slate-700 rounded-full">BLoC</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-card bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg"
+                    data-category="design">
+                    <div class="h-48 bg-gradient-to-br from-indigo-400 to-blue-500 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1541462608143-67571c6738dd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                            alt="Project 6" loading="lazy" class="w-full h-full object-cover">
+                        <div
+                            class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                            <a href="#" class="px-6 py-3 bg-white text-indigo-500 rounded-lg font-medium">Ver
+                                Detalles</a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold">Landing Page</h3>
+                            <span
+                                class="text-xs px-2 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-600 dark:text-indigo-300 rounded-full">Diseño</span>
+                        </div>
+                        <p class="text-gray-500 dark:text-gray-400 mb-4">
+                            Diseño de landing page moderna y conversiva para producto SaaS con animaciones interactivas.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-slate-700 rounded-full">Figma</span>
+                            <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-slate-700 rounded-full">GSAP</span>
+                            <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-slate-700 rounded-full">Tailwind</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="#"
+                    class="px-8 py-3 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 transition-all inline-flex items-center">
+                    Ver más proyectos
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gray-50 dark:bg-slate-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-16 relative">
+                <span class="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">Mis
+                    Habilidades</span>
+                <span
+                    class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"></span>
+            </h2>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <!-- Frontend Skills -->
+                <div class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="p-3 rounded-full bg-blue-100 dark:bg-blue-900 mr-4">
+                            <i class="fas fa-laptop-code text-blue-500 dark:text-blue-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold">Frontend</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="skill-badge flex items-center px-3 py-2 bg-gray-100 dark:bg-slate-600 rounded-lg">
+                            <i class="fab fa-html5 text-orange-500 mr-2"></i>
+                            <span>HTML5</span>
+                        </div>
+                        <div class="skill-badge flex items-center px-3 py-2 bg-gray-100 dark:bg-slate-600 rounded-lg">
+                            <i class="fab fa-css3-alt text-blue-500 mr-2"></i>
+                            <span>CSS3</span>
+                        </div>
+                        <div class="skill-badge flex items-center px-3 py-2 bg-gray-100 dark:bg-slate-600 rounded-lg">
+                            <i class="fab fa-js-square text-yellow-500 mr-2"></i>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="skill-badge flex items-center px-3 py-2 bg-gray-100 dark:bg-slate-600 rounded-lg">
+                            <i class="fab fa-react text-blue-400 mr-2"></i>
+                            <span>React</span>
+                        </div>
+                        <div class="skill-badge flex items-center px-3 py-2 bg-gray-100 dark:bg-slate-600 rounded-lg">
+                            <i class="fas fa-wind text-teal-400 mr-2"></i>
+                            <span>Tailwind</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Backend Skills -->
+                <div class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="p-3 rounded-full bg-purple-100 dark:bg-purple-900 mr-4">
+                            <i class="fas fa-server text-purple-500 dark:text-purple-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold">Backend</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="skill-badge flex items-center px-3 py-2 bg-gray-100 dark:bg-slate-600 rounded-lg">
+                            <i class="fab fa-node-js text-green-500 mr-2"></i>
+                            <span>Node.js</span>
+                        </div>
+                        <div class="skill-badge flex items-center px-3 py-2 bg-gray-100 dark:bg-slate-600 rounded-lg">
+                            <i class="fab fa-python text-blue-600 mr-2"></i>
+                            <span>Python</span>
+                        </div>
+                        <div class="skill-badge flex items-center px-3 py-2 bg-gray-100 dark:bg-slate-600 rounded-lg">
+                            <i class="fas fa-database text-yellow-600 mr-2"></i>
+                            <span>MongoDB</span>
+                        </div>
+                        <div class="skill-badge flex items-center px-3 py-2 bg-gray-100 dark:bg-slate-600 rounded-lg">
+                            <i class="fas fa-database text-blue-600 mr-2"></i>
+                            <span>PostgreSQL</span>
+                        </div>
+                        <div class="skill-badge flex items-center px-3 py-2 bg-gray-100 dark:bg-slate-600 rounded-lg">
+                            <i class="fas fa-fire text-orange-500 mr-2"></i>
+                            <span>Firebase</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Skills -->
+                <div class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="p-3 rounded-full bg-green-100 dark:bg-green-900 mr-4">
+                            <i class="fas fa-mobile-alt text-green-500 dark:text-green-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold">Mobile</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="skill-badge flex items-center px-3 py-2 bg-gray-100 dark:bg-slate-600 rounded-lg">
+                            <i class="fab fa-react text-blue-400 mr-2"></i>
+                            <span>React Native</span>
+                        </div>
+                        <div class="skill-badge flex items-center px-3 py-2 bg-gray-100 dark:bg-slate-600 rounded-lg">
+                            <i class="fab fa-android text-green-500 mr-2"></i>
+                            <span>Android</span>
+                        </div>
+                        <div class="skill-badge flex items-center px-3 py-2 bg-gray-100 dark:bg-slate-600 rounded-lg">
+                            <i class="fab fa-apple text-gray-700 dark:text-gray-300 mr-2"></i>
+                            <span>iOS</span>
+                        </div>
+                        <div class="skill-badge flex items-center px-3 py-2 bg-gray-100 dark:bg-slate-600 rounded-lg">
+                            <i class="fas fa-dharmachakra text-blue-600 mr-2"></i>
+                            <span>Flutter</span>
+                        </div>
+                        <div class="skill-badge flex items-center px-3 py-2 bg-gray-100 dark:bg-slate-600 rounded-lg">
+                            <i class="fas fa-exchange-alt text-purple-500 mr-2"></i>
+                            <span>Redux</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Design & Tools -->
+                <div class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="p-3 rounded-full bg-yellow-100 dark:bg-yellow-900 mr-4">
+                            <i class="fas fa-paint-brush text-yellow-500 dark:text-yellow-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold">Diseño & Herramientas</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="skill-badge flex items-center px-3 py-2 bg-gray-100 dark:bg-slate-600 rounded-lg">
+                            <i class="fab fa-figma text-purple-500 mr-2"></i>
+                            <span>Figma</span>
+                        </div>
+                        <div class="skill-badge flex items-center px-3 py-2 bg-gray-100 dark:bg-slate-600 rounded-lg">
+                            <i class="fab fa-adobe text-pink-600 mr-2"></i>
+                            <span>Photoshop</span>
+                        </div>
+                        <div class="skill-badge flex items-center px-3 py-2 bg-gray-100 dark:bg-slate-600 rounded-lg">
+                            <i class="fab fa-adobe text-orange-500 mr-2"></i>
+                            <span>Illustrator</span>
+                        </div>
+                        <div class="skill-badge flex items-center px-3 py-2 bg-gray-100 dark:bg-slate-600 rounded-lg">
+                            <i class="fab fa-git-alt text-orange-600 mr-2"></i>
+                            <span>Git</span>
+                        </div>
+                        <div class="skill-badge flex items-center px-3 py-2 bg-gray-100 dark:bg-slate-600 rounded-lg">
+                            <i class="fab fa-docker text-blue-500 mr-2"></i>
+                            <span>Docker</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skill Levels -->
+            <div class="mt-16 bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg">
+                <h3 class="text-xl font-bold mb-6">Nivel de Habilidades</h3>
+                <div class="space-y-6">
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="font-medium">JavaScript</span>
+                            <span class="text-gray-500 dark:text-gray-400">90%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-slate-700 rounded-full h-2.5">
+                            <div class="bg-blue-500 h-2.5 rounded-full" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="font-medium">React</span>
+                            <span class="text-gray-500 dark:text-gray-400">85%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-slate-700 rounded-full h-2.5">
+                            <div class="bg-blue-500 h-2.5 rounded-full" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="font-medium">Node.js</span>
+                            <span class="text-gray-500 dark:text-gray-400">80%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-slate-700 rounded-full h-2.5">
+                            <div class="bg-blue-500 h-2.5 rounded-full" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="font-medium">UI/UX Design</span>
+                            <span class="text-gray-500 dark:text-gray-400">75%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-slate-700 rounded-full h-2.5">
+                            <div class="bg-blue-500 h-2.5 rounded-full" style="width: 75%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-16 relative">
+                <span class="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">Contacto</span>
+                <span
+                    class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"></span>
+            </h2>
+
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-12 md:mb-0 md:pr-12">
+                    <h3 class="text-2xl font-bold mb-6">Hablemos de tu proyecto</h3>
+                    <p class="text-gray-500 dark:text-gray-400 mb-8">
+                        ¿Tienes un proyecto en mente o quieres colaborar? Envíame un mensaje y te responderé lo antes
+                        posible. Estoy siempre abierto a nuevas oportunidades y desafíos interesantes.
+                    </p>
+
+                    <div class="space-y-6">
+                        <div class="flex items-center">
+                            <div class="p-3 rounded-full bg-blue-100 dark:bg-blue-900 mr-4">
+                                <i class="fas fa-envelope text-blue-500 dark:text-blue-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Email</h4>
+                                <a href="https://mail.google.com/mail/u/0/#inbox"
+                                    class="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400">ivermasco5@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="p-3 rounded-full bg-purple-100 dark:bg-purple-900 mr-4">
+                                <i class="fas fa-phone-alt text-purple-500 dark:text-purple-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Teléfono</h4>
+                                <a href="tel:+57"
+                                    class="text-gray-500 dark:text-gray-400 hover:text-purple-500 dark:hover:text-purple-400">+57
+                                    (313) 217-2050</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="p-3 rounded-full bg-green-100 dark:bg-green-900 mr-4">
+                                <i class="fas fa-map-marker-alt text-green-500 dark:text-green-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Ubicación</h4>
+                                <p class="text-gray-500 dark:text-gray-400">Barranquilla, Colombia</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-10">
+                        <h4 class="font-bold mb-4">Sígueme</h4>
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/IBER-DEV"
+                                class="p-3 bg-gray-100 dark:bg-slate-700 rounded-full hover:bg-gray-200 dark:hover:bg-slate-600 transition-colors">
+                                <i class="fab fa-github text-gray-700 dark:text-gray-300"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/ibermasco/"
+                                class="p-3 bg-gray-100 dark:bg-slate-700 rounded-full hover:bg-gray-200 dark:hover:bg-slate-600 transition-colors">
+                                <i class="fab fa-linkedin-in text-blue-600 dark:text-blue-400"></i>
+                            </a>
+                            <a href="#"
+                                class="p-3 bg-gray-100 dark:bg-slate-700 rounded-full hover:bg-gray-200 dark:hover:bg-slate-600 transition-colors">
+                                <i class="fab fa-twitter text-blue-400 dark:text-blue-300"></i>
+                            </a>
+                            <a href="https://www.instagram.com/iber_masco/"
+                                class="p-3 bg-gray-100 dark:bg-slate-700 rounded-full hover:bg-gray-200 dark:hover:bg-slate-600 transition-colors">
+                                <i class="fab fa-instagram text-pink-600 dark:text-pink-400"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:w-1/2">
+                    <form class="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg">
+                        <div class="mb-6">
+                            <label for="name" class="block mb-2 font-medium">Nombre</label>
+                            <input type="text" id="name"
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-slate-700"
+                                placeholder="Tu nombre">
+                        </div>
+                        <div class="mb-6">
+                            <label for="email" class="block mb-2 font-medium">Email</label>
+                            <input type="email" id="email"
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-slate-700"
+                                placeholder="tu@email.com">
+                        </div>
+                        <div class="mb-6">
+                            <label for="subject" class="block mb-2 font-medium">Asunto</label>
+                            <input type="text" id="subject"
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-slate-700"
+                                placeholder="¿Sobre qué quieres hablar?">
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block mb-2 font-medium">Mensaje</label>
+                            <textarea id="message" rows="5"
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-slate-700"
+                                placeholder="Tu mensaje..."></textarea>
+                        </div>
+                        <button type="submit"
+                            class="w-full px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all shadow-lg">
+                            Enviar Mensaje
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 dark:bg-slate-800 py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#"
+                        class="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">Iber
+                        Masco</a>
+                    <p class="text-gray-500 dark:text-gray-400 mt-2">© 2025 Casi Todos los derechos reservados</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#"
+                        class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors">Inicio</a>
+                    <a href="#about"
+                        class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors">Sobre
+                        mí</a>
+                    <a href="#projects"
+                        class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors">Proyectos</a>
+                    <a href="#contact"
+                        class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors">Contacto</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<!-- Librerías externas -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- Para SweetAlert -->
+<script src="https://unpkg.com/scrollreveal"></script> <!-- Para ScrollReveal -->
+
+<!--  script -->
+<script src="script.js"></script>
+
+<!-- Función mostrarMensaje -->
+<script>
+  function mostrarMensaje() {
+    Swal.fire({
+  title: '🚀 ¡Muy pronto!',
+  html: '<b>Estamos preparando algo increíble.</b><br><br>¡Sígueme para no perderte el lanzamiento!',
+  width: 600,
+  padding: '2rem',
+  color: '#4f46e5', 
+  background: '#ffffff url("img/modal.png") no-repeat center/cover',
+  backdrop: `
+    rgba(0,0,0,0.6)
+    url('https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMzJ6b3Via3VpMWVycHpwdmgxbmZ6Y3VzODlzcTExNWlmcHFhYjU3MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/kg05jJJjleil1U3xzI/giphy.gif')
+    right bottom
+    no-repeat
+  `,
+  showCancelButton: true,
+  confirmButtonText: 'Sígueme en LinkedIn',
+  cancelButtonText: 'Tal vez después',
+  confirmButtonColor: '#6366f1',  // Color púrpura/azulito de tu tema
+  cancelButtonColor: '#f43f5e',   // Rosa bonito
+  footer: '<a href="https://www.instagram.com/iber_masco/" target="_blank" style="color:#6366f1;">También puedes seguirme en Instagram 🚀</a>'
+});
+
+
+
+  }
+</script>
+
+
+
+</body>
+
+</html>
