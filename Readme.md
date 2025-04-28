@@ -52,6 +52,10 @@ Eres libre de utilizarlo, modificarlo y distribuirlo, siempre y cuando respetes 
 
 
 ## 📸 Capturas de Pantalla
+![image](https://github.com/user-attachments/assets/255a94e3-a8ea-48ec-8c2a-6cc0d90be3d9)
+![image](https://github.com/user-attachments/assets/4419ec0f-01af-4479-bc35-bdad36f0366f)
+
+
 
 ![alt text](image.png)
 ![alt text](image-1.png)
